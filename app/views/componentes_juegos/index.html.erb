@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Componentes Juegos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Componentes</th>
+      <th>Juego</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+     <% @componentes_juegos.each do |componentes_juego| %>
+    <tr>
+        <% if componentes_juego.images.attached?%>
+          <td><%= image_tag componentes_juego.images[0].variant(resize: '100x100', monochrome: true)%> <%= link_to 'Descargar', rails_blob_path(componentes_juego.images[0], disposition: 'attachment') %></td>
+          
+        <%end%>
+        <td><%= componentes_juego.componente %></td>
+        <td><%= componentes_juego.juego.name %></td>
+        <td><%= link_to 'Show', componentes_juego %></td>
+        <td><%= link_to 'Edit', edit_componentes_juego_path(componentes_juego) %></td>
+        <td><%= link_to 'Destroy', componentes_juego, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Componentes Juego', new_componentes_juego_path %>

@@ -1,0 +1,30 @@
+<%= form_with(model: reglas_juego, local: true) do |form| %>
+  <% if reglas_juego.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reglas_juego.errors.count, "error") %> prohibited this reglas_juego from being saved:</h2>
+
+      <ul>
+      <% reglas_juego.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :juego_id %>
+    <%= form.select :juego_id, Juego.all.collect { |b| [ b.name, b.id ]  } %>
+  </div>
+  
+
+  <div class="field">
+    <%= form.label :regla %>
+    <%= form.text_field :regla %>
+  </div>
+   <div class="field">
+    <%= form.label :file, 'PDF' %>
+    <%= form.file_field :file %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

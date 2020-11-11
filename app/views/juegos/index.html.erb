@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Juegos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre del juego</th>
+      <th>Foto de la caja del tablero</th>
+    
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @juegos.each do |juego| %>
+      <tr>
+        <td><%= juego.name %></td>
+        <td><%= image_tag juego.avatar.variant( resize: '100x100', monochrome: true) %><%= link_to 'Descargar', rails_blob_path(juego.avatar, disposition: 'attachment') %></td>
+        <td><%= link_to 'Show', juego %></td>
+        <td><%= link_to 'Edit', edit_juego_path(juego) %></td>
+        <td><%= link_to 'Destroy', juego, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Juego', new_juego_path %> <br>
+<%= link_to 'Componentes', componentes_juegos_path %> <br>
+<%= link_to 'Reglas', reglas_juegos_path %>

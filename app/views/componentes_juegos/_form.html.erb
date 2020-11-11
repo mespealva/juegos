@@ -1,0 +1,31 @@
+<%= form_with(model: componentes_juego, local: true) do |form| %>
+  <% if componentes_juego.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(componentes_juego.errors.count, "error") %> prohibited this componentes_juego from being saved:</h2>
+
+      <ul>
+      <% componentes_juego.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :componente %>
+    <%= form.text_area :componente %>
+  </div>
+  <div class="field">
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+ <div class="field">
+    <%= form.label :juego_id %>
+    <%= form.select :juego_id, Juego.all.collect { |b| [ b.name, b.id ]  } %>
+  </div>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

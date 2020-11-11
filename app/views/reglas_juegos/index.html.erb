@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reglas Juegos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Juego</th>
+      <th>Regla</th>
+      <th>PDF</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reglas_juegos.each do |reglas_juego| %>
+      <tr>
+        <td><%= reglas_juego.juego.name %></td>
+        <td><%= reglas_juego.regla %>  <%= link_to 'Descargar', rails_blob_path(reglas_juego.file, disposition: 'attachment') %></td>
+        
+          <%# <% if reglas_juego.file.previewable? %>
+        <%#<td> <%#= image_tag reglas_juego.file.preview(resize: "100x100>"),  rails_blob_path(reglas_juego.file, disposition: "file") %> <%#</td>
+        <%#end%> 
+        <td><%= link_to 'Show', reglas_juego %></td>
+        <td><%= link_to 'Edit', edit_reglas_juego_path(reglas_juego) %></td>
+        <td><%= link_to 'Destroy', reglas_juego, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reglas Juego', new_reglas_juego_path %>

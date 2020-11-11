@@ -1,0 +1,25 @@
+<%= form_with(model: juego, local: true) do |form| %>
+  <% if juego.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(juego.errors.count, "error") %> prohibited this juego from being saved:</h2>
+
+      <ul>
+      <% juego.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label :avatar, 'Foto de la caja del tablero' %>
+    <%= form.file_field :avatar %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Componente:</strong>
+  <%= @componentes_juego.componente %>
+</p>
+
+<p>
+  <strong>Juego:</strong>
+  <%= @componentes_juego.juego.name %>
+</p>
+  <% @componentes_juego.images.each do |image|%>
+   <%= image_tag image.variant(resize: '100x100', monochrome: true) %>
+   <%= link_to 'Descargar', rails_blob_path(image, disposition: 'attachment') %>
+   <br>
+  <%end%>
+<%= link_to 'Edit', edit_componentes_juego_path(@componentes_juego) %> |
+<%= link_to 'Back', componentes_juegos_path %>

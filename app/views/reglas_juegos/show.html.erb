@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Juego:</strong>
+  <%= @reglas_juego.juego.name %>
+</p>
+
+<p>
+  <strong>Regla:</strong>
+  <%= @reglas_juego.regla %>
+</p>
+
+    <%# <li>
+      <%= image_tag @reglas_juego.file.preview(resize_to_limit: [100, 100]) %>
+    <%#</li> 
+
+<%= link_to 'Edit', edit_reglas_juego_path(@reglas_juego) %> |
+<%= link_to 'Back', reglas_juegos_path %>
